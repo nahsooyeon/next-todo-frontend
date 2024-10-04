@@ -1,8 +1,7 @@
 export interface TodoDTO {
   id: number;
   title: string;
-  description?: string;
+  description?: string | null;
   completed: boolean;
-  userId: number;
-  dueDate?: string;
+  dueDate?: string | null;
 }

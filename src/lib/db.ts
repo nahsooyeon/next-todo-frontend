@@ -2,16 +2,12 @@ import { TodoDTO } from "@/dto/todo.dto";
 import { UserDTO } from "@/dto/user.dto";
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 // TODO 리스트 가져오기
 export async function getTodosFromDB(): Promise<TodoDTO[]> {
   try {
-    const todos = await prisma.todo.findMany({
-      include: {
-        user: true, // 각 TODO 항목과 관련된 사용자 정보도 함께 가져옴
-      },
-    });
+    const todos = await prisma.todo.findMany();
 
     /* 아직 데이터가 없으면 빈 배열을 보냄 */
     if (!todos) {
